@@ -5,19 +5,37 @@ import PropTypes from "prop-types";
 import "./css/employee.css";
 
 class Employee extends Component {
+  state = {
+    showEmployeeInfo: false
+  };
+
+  onShowClick = e => {
+    // console.log(e.target);
+    this.setState({
+      showEmployeeInfo: !this.state.showEmployeeInfo
+    });
+  };
+
   render() {
-    const { firstName, lastName, email, phone, salary } = this.props;
+    console.log(this.props);
+    const { employee } = this.props;
+    const { showEmployeeInfo } = this.state;
+    console.log(this.state);
 
     return (
       <div className="card card-body mb-3">
         <h4>
-          {firstName} {lastName}
+          {employee.firstName} {employee.lastName}{" "}
+          <i onClick={this.onShowClick} className="fas fa-sort-down" />
         </h4>
-        <ul className="list-group">
-          <li className="list-group-item">Email: {email}</li>
-          <li className="list-group-item">Phone: {phone}</li>
-          <li className="list-group-item">Salary: {salary}</li>
-        </ul>
+
+        {showEmployeeInfo ? (
+          <ul className="list-group">
+            <li className="list-group-item">Email: {employee.email}</li>
+            <li className="list-group-item">Phone: {employee.phone}</li>
+            <li className="list-group-item">Salary: {employee.salary}</li>
+          </ul>
+        ) : null}
       </div>
     );
   }
@@ -25,11 +43,7 @@ class Employee extends Component {
 
 // Prop Types
 Employee.propTypes = {
-  firstName: PropTypes.string.isRequired,
-  lastName: PropTypes.string.isRequired,
-  email: PropTypes.string.isRequired,
-  phone: PropTypes.string.isRequired,
-  salary: PropTypes.string.isRequired
+  employee: PropTypes.object.isRequired
 };
 
 export default Employee;
