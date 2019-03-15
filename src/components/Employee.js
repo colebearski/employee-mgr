@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 
 // CSS
-import "./css/employees.css";
+import "./css/employee.css";
 
-class Employees extends Component {
+class Employee extends Component {
   render() {
     const { firstName, lastName, email, phone, salary } = this.props;
 
@@ -24,7 +24,7 @@ class Employees extends Component {
 }
 
 // Prop Types
-Employees.propTypes = {
+Employee.propTypes = {
   firstName: PropTypes.string.isRequired,
   lastName: PropTypes.string.isRequired,
   email: PropTypes.string.isRequired,
@@ -32,4 +32,4 @@ Employees.propTypes = {
   salary: PropTypes.string.isRequired
 };
 
-export default Employees;
+export default Employee;

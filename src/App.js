@@ -5,7 +5,7 @@ import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 // Components
-import Employees from "./components/Employees";
+import Employee from "./components/Employee";
 import Header from "./components/Header";
 
 class App extends Component {
@@ -14,21 +14,21 @@ class App extends Component {
       <div className="App">
         <Header branding="Employee Manager" />
         <div className="container">
-          <Employees
+          <Employee
             firstName="John"
             lastName="Doe"
             email="john@gmail.com"
             phone="111-222-3333"
             salary="$500,000"
           />
-          <Employees
+          <Employee
             firstName="Greg"
             lastName="G Thug"
             email="abraham@gmail.com"
             phone="111-222-4444"
             salary="$100,000"
           />
-          <Employees
+          <Employee
             firstName="Jenny"
             lastName="Lamb"
             email="lamblamb@gmail.com"
