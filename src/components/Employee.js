@@ -16,6 +16,12 @@ class Employee extends Component {
     });
   };
 
+  onDeleteClick = e => {
+    // console.log("clicked");
+    // Creating a props to pass to Employees.js
+    this.props.deleteClickHandler();
+  };
+
   render() {
     console.log(this.props);
     const { employee } = this.props;
@@ -26,7 +32,8 @@ class Employee extends Component {
       <div className="card card-body mb-3">
         <h4>
           {employee.firstName} {employee.lastName}{" "}
-          <i onClick={this.onShowClick} className="fas fa-sort-down" />
+          <i onClick={this.onShowClick} className="showBtn fas fa-sort-down" />
+          <i onClick={this.onDeleteClick} className="deleteBtn fas fa-times" />
         </h4>
 
         {showEmployeeInfo ? (
@@ -43,7 +50,8 @@ class Employee extends Component {
 
 // Prop Types
 Employee.propTypes = {
-  employee: PropTypes.object.isRequired
+  employee: PropTypes.object.isRequired,
+  deleteClickHandler: PropTypes.func.isRequired
 };
 
 export default Employee;

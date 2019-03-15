@@ -31,12 +31,27 @@ class Employees extends Component {
     ]
   };
 
+  deleteContact = id => {
+    // console.log(this.state);
+    const { employees } = this.state;
+
+    const newEmployees = employees.filter(employee => employee.id !== id);
+
+    this.setState({
+      employees: newEmployees
+    });
+  };
+
   render() {
     const { employees } = this.state;
     return (
       <React.Fragment>
         {employees.map(employee => (
-          <Employee key={employee.id} employee={employee} />
+          <Employee
+            key={employee.id}
+            employee={employee}
+            deleteClickHandler={this.deleteContact.bind(this, employee.id)}
+          />
         ))}
       </React.Fragment>
     );
