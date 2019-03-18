@@ -2,10 +2,10 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 
 // CSS
-import "./css/employee.css";
+import "./../css/employee.css";
 
 // Components
-import { Consumer } from "../Context";
+import { Consumer } from "../../Context";
 
 class Employee extends Component {
   state = {

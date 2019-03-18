@@ -5,8 +5,9 @@ import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 // Components
-import Employees from "./components/Employees";
-import Header from "./components/Header";
+import Employees from "./components/employees/Employees";
+import Header from "./components/layout/Header";
+import AddEmployee from "./components/employees/AddEmployee";
 import { Provider } from "./Context";
 
 class App extends Component {
@@ -16,6 +17,7 @@ class App extends Component {
         <div className="App">
           <Header branding="Employee Manager" />
           <div className="container">
+            <AddEmployee />
             <Employees />
           </div>
         </div>

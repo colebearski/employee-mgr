@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Employee from "./Employee";
-import { Consumer } from "../Context";
+import { Consumer } from "../../Context";
 
 class Employees extends Component {
   render() {

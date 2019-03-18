@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 // CSS
-import "./css/header.css";
+import "./../css/header.css";
 
 function Header(props) {
   const { branding } = props;

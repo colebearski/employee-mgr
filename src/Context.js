@@ -13,6 +13,13 @@ const reducer = (state, action) => {
           employee => employee.id !== action.payload
         )
       };
+    case "ADD_EMPLOYEE":
+      return {
+        // Return an object and the initial state
+        ...state,
+        employees: [action.payload, ...state.employees]
+      };
+
     default:
       return state;
   }
