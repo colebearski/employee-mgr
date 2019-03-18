@@ -69,6 +69,9 @@ class AddEmployee extends Component {
       salary: "",
       errors: {}
     });
+
+    // Redirect
+    this.props.history.push("/");
   };
 
   render() {
