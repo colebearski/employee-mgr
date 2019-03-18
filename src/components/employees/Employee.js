@@ -20,10 +20,10 @@ class Employee extends Component {
     });
   };
 
-  onDeleteClick = (id, dispatch) => {
+  onDeleteClick = async (id, dispatch) => {
     // dispatch({ type: "DELETE_EMPLOYEE", payload: id });
     // Delete request to fake rest api
-    axios.delete(`http://localhost:3000/employees/${id}`).then(resp => {
+    await axios.delete(`http://localhost:3000/employees/${id}`).then(resp => {
       console.log(resp);
       dispatch({ type: "DELETE_EMPLOYEE", payload: id });
     });

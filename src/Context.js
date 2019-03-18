@@ -33,7 +33,7 @@ export class Provider extends Component {
   };
 
   async componentDidMount() {
-    const res = await axios
+    const resp = await axios
       .get("http://localhost:3000/employees")
       .then(resp => {
         console.log(resp.data);
