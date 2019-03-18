@@ -1,59 +1,42 @@
 import React, { Component } from "react";
 import Employee from "./Employee";
+import { Consumer } from "../Context";
 
 class Employees extends Component {
-  state = {
-    employees: [
-      {
-        id: 1,
-        firstName: "Henry",
-        lastName: "Ford",
-        email: "mustang@gmail.com",
-        phone: "444-444-4444",
-        salary: "$100,000"
-      },
-      {
-        id: 2,
-        firstName: "Bill",
-        lastName: "Gates",
-        email: "microsoft@gmail.com",
-        phone: "555-555-5555",
-        salary: "$200,000"
-      },
-      {
-        id: 3,
-        firstName: "Elon",
-        lastName: "Musk",
-        email: "tesla@gmail.com",
-        phone: "777-777-7777",
-        salary: "$300,000"
-      }
-    ]
-  };
-
   deleteContact = id => {
-    // console.log(this.state);
+    // Takes employees from state, destructuring. Instead of calling this.state.employees
     const { employees } = this.state;
-
+    // Filter f(x) to call 'new' state and filter out deleted state
     const newEmployees = employees.filter(employee => employee.id !== id);
-
+    // Sets the new filtered state
     this.setState({
       employees: newEmployees
     });
   };
 
   render() {
-    const { employees } = this.state;
     return (
-      <React.Fragment>
-        {employees.map(employee => (
-          <Employee
-            key={employee.id}
-            employee={employee}
-            deleteClickHandler={this.deleteContact.bind(this, employee.id)}
-          />
-        ))}
-      </React.Fragment>
+      <Consumer>
+        {value => {
+          const { employees } = value;
+          console.log(value);
+
+          return (
+            <React.Fragment>
+              {employees.map(employee => (
+                <Employee
+                  key={employee.id}
+                  employee={employee}
+                  deleteClickHandler={this.deleteContact.bind(
+                    this,
+                    employee.id
+                  )}
+                />
+              ))}
+            </React.Fragment>
+          );
+        }}
+      </Consumer>
     );
   }
 }

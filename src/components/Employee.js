@@ -26,7 +26,7 @@ class Employee extends Component {
     console.log(this.props);
     const { employee } = this.props;
     const { showEmployeeInfo } = this.state;
-    console.log(this.state);
+    // console.log(this.state);
 
     return (
       <div className="card card-body mb-3">
