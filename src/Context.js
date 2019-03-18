@@ -20,6 +20,17 @@ const reducer = (state, action) => {
         ...state,
         employees: [action.payload, ...state.employees]
       };
+    case "EDIT_EMPLOYEE":
+      return {
+        // Returns the initial state
+        // Matches params id to edit employee
+        ...state,
+        employees: state.employees.map(employee =>
+          employee.id === action.payload.id
+            ? (employee = action.payload)
+            : employee
+        )
+      };
 
     default:
       return state;

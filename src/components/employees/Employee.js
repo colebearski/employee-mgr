@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 // CSS
 import "./../css/employee.css";
@@ -30,10 +31,10 @@ class Employee extends Component {
   };
 
   render() {
-    // console.log(this.props);
+    console.log(this.props);
+    // console.log(this.state);
     const { employee } = this.props;
     const { showEmployeeInfo } = this.state;
-    // console.log(this.state);
 
     return (
       <Consumer>
@@ -52,6 +53,17 @@ class Employee extends Component {
                   onClick={this.onDeleteClick.bind(this, employee.id, dispatch)}
                   className="deleteBtn fas fa-times"
                 />
+                <Link to={`employee/edit/${this.props.employee.id}`}>
+                  <i
+                    className="fas fa-pencil-alt"
+                    style={{
+                      cursor: "pointer",
+                      float: "right",
+                      color: "black",
+                      marginRight: "1rem"
+                    }}
+                  />
+                </Link>
               </h4>
 
               {showEmployeeInfo ? (

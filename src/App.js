@@ -10,6 +10,7 @@ import Employees from "./components/employees/Employees";
 import Header from "./components/layout/Header";
 import About from "./components/pages/About";
 import AddEmployee from "./components/employees/AddEmployee";
+import EditEmployee from "./components/employees/EditEmployee";
 import NotFound from "./components/pages/NotFound";
 import { Provider } from "./Context";
 
@@ -24,6 +25,11 @@ class App extends Component {
               <Switch>
                 <Route exact path="/" component={Employees} />
                 <Route exact path="/employee/add" component={AddEmployee} />
+                <Route
+                  exact
+                  path="/employee/edit/:id"
+                  component={EditEmployee}
+                />
                 <Route exact path="/about" component={About} />
                 <Route component={NotFound} />
               </Switch>

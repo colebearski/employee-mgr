@@ -6,7 +6,7 @@ import axios from "axios";
 import { Consumer } from "../../Context";
 import TextInputGroup from "../layout/TextInputGroup";
 
-class AddEmployee extends Component {
+class EditEmployee extends Component {
   state = {
     firstName: "",
     lastName: "",
@@ -16,12 +16,38 @@ class AddEmployee extends Component {
     errors: {}
   };
 
+  async componentDidMount() {
+    // Get ID from params
+    // console.log(this.props);
+    const { id } = this.props.match.params;
+
+    const resp = await axios
+      .get(`http://localhost:3000/employees/${id}`)
+      .then(resp => {
+        // console.log(resp);
+
+        const employee = resp.data;
+
+        this.setState({
+          firstName: employee.firstName,
+          lastName: employee.lastName,
+          email: employee.email,
+          phone: employee.phone,
+          salary: employee.salary
+        });
+      });
+  }
+
+  // Updates state from the form values
+
   onChange = e =>
     this.setState({
       [e.target.name]: e.target.value
     });
 
-  onSubmit = (dispatch, e) => {
+  // Form submit
+
+  onSubmit = async (dispatch, e) => {
     e.preventDefault();
     // console.log(this.state);
 
@@ -49,8 +75,8 @@ class AddEmployee extends Component {
       return;
     }
 
-    const newEmployee = {
-      // id: uuid(),
+    // Create update object
+    const updateEmployee = {
       firstName,
       lastName,
       email,
@@ -58,13 +84,15 @@ class AddEmployee extends Component {
       salary
     };
 
-    // Post request to fake rest api
-    axios.post("http://localhost:3000/employees", newEmployee).then(resp => {
-      // console.log(resp);
-      dispatch({ type: "ADD_EMPLOYEE", payload: resp.data });
-    });
+    // Put request, get ID from url
+    const { id } = this.props.match.params;
 
-    // dispatch({ type: "ADD_EMPLOYEE", payload: newEmployee });
+    axios
+      .put(`http://localhost:3000/employees/${id}`, updateEmployee)
+      .then(resp => {
+        console.log(resp.data);
+        dispatch({ type: "UPDATE_EMPLOYEE", payload: resp.data });
+      });
 
     // Clear state once submitted
     this.setState({
@@ -78,6 +106,7 @@ class AddEmployee extends Component {
 
     // Redirect
     this.props.history.push("/");
+    window.location.reload();
   };
 
   render() {
@@ -89,7 +118,7 @@ class AddEmployee extends Component {
 
           return (
             <div className="card mb-3">
-              <div className="card-header">Add Employee</div>
+              <div className="card-header">Update Employee</div>
               <div className="card-body">
                 <form onSubmit={this.onSubmit.bind(this, dispatch)}>
                   <TextInputGroup
@@ -134,7 +163,7 @@ class AddEmployee extends Component {
                   />
                   <input
                     type="submit"
-                    value="Add Employee"
+                    value="Update Employee"
                     className="btn btn-light btn-block"
                   />
                 </form>
@@ -147,4 +176,4 @@ class AddEmployee extends Component {
   }
 }
 
-export default AddEmployee;
+export default EditEmployee;
