@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import uuid from "uuid";
+import axios from "axios";
 
 //Components
 import { Consumer } from "../../Context";
@@ -50,7 +51,7 @@ class AddEmployee extends Component {
     }
 
     const newEmployee = {
-      id: uuid(),
+      // id: uuid(),
       firstName,
       lastName,
       email,
@@ -58,7 +59,13 @@ class AddEmployee extends Component {
       salary
     };
 
-    dispatch({ type: "ADD_EMPLOYEE", payload: newEmployee });
+    // Post request to fake rest api
+    axios.post("http://localhost:3000/employees", newEmployee).then(resp => {
+      console.log(resp);
+      dispatch({ type: "ADD_EMPLOYEE", payload: resp.data });
+    });
+
+    // dispatch({ type: "ADD_EMPLOYEE", payload: newEmployee });
 
     // Clear state once submitted
     this.setState({

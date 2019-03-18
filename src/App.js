@@ -10,6 +10,7 @@ import Employees from "./components/employees/Employees";
 import Header from "./components/layout/Header";
 import About from "./components/pages/About";
 import AddEmployee from "./components/employees/AddEmployee";
+import NotFound from "./components/pages/NotFound";
 import { Provider } from "./Context";
 
 class App extends Component {
@@ -24,6 +25,7 @@ class App extends Component {
                 <Route exact path="/" component={Employees} />
                 <Route exact path="/employee/add" component={AddEmployee} />
                 <Route exact path="/about" component={About} />
+                <Route component={NotFound} />
               </Switch>
             </div>
           </div>
