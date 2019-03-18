@@ -2,6 +2,22 @@ import React, { Component } from "react";
 
 const Context = React.createContext();
 
+const reducer = (state, action) => {
+  // Evalue action types
+  switch (action.type) {
+    case "DELETE_EMPLOYEE":
+      return {
+        // Filters out the ID which is sent thru payload
+        ...state,
+        employees: state.employees.filter(
+          employee => employee.id !== action.payload
+        )
+      };
+    default:
+      return state;
+  }
+};
+
 export class Provider extends Component {
   state = {
     employees: [
@@ -29,7 +45,8 @@ export class Provider extends Component {
         phone: "777-777-7777",
         salary: "$300,000"
       }
-    ]
+    ],
+    dispatch: action => this.setState(state => reducer(state, action))
   };
 
   render() {
