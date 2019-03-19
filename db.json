@@ -31,6 +31,14 @@
       "phone": "123-444-5678",
       "salary": "250,000",
       "id": 4
+    },
+    {
+      "firstName": "React",
+      "lastName": "Redux",
+      "email": "rr@gmail.com",
+      "phone": "801-555-1212",
+      "salary": "500,000",
+      "id": 5
     }
   ]
 }

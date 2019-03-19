@@ -22,7 +22,7 @@ class EditEmployee extends Component {
     const { id } = this.props.match.params;
 
     const resp = await axios
-      .get(`http://localhost:3000/employees/${id}`)
+      .get(`http://localhost:5000/employees/${id}`)
       .then(resp => {
         // console.log(resp);
 
@@ -88,7 +88,7 @@ class EditEmployee extends Component {
     const { id } = this.props.match.params;
 
     axios
-      .put(`http://localhost:3000/employees/${id}`, updateEmployee)
+      .put(`http://localhost:5000/employees/${id}`, updateEmployee)
       .then(resp => {
         console.log(resp.data);
         dispatch({ type: "UPDATE_EMPLOYEE", payload: resp.data });

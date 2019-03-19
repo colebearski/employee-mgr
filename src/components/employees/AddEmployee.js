@@ -59,7 +59,7 @@ class AddEmployee extends Component {
     };
 
     // Post request to fake rest api
-    axios.post("http://localhost:3000/employees", newEmployee).then(resp => {
+    axios.post("http://localhost:5000/employees", newEmployee).then(resp => {
       // console.log(resp);
       dispatch({ type: "ADD_EMPLOYEE", payload: resp.data });
     });

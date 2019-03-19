@@ -2,6 +2,7 @@
   "name": "employee-mgr",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://colebearski.github.io/employee-mgr",
   "dependencies": {
     "axios": "^0.18.0",
     "bootstrap": "^4.3.1",
@@ -16,11 +17,12 @@
     "uuid": "^3.3.2"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "deploy": "npm run build&&gh-pages -d build",
+    "start": "react-scripts start -p 3000",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "json:server": "json-server --watch db.json"
+    "json:server": "json-server --watch db.json -p 5000"
   },
   "eslintConfig": {
     "extends": "react-app"

@@ -45,7 +45,7 @@ export class Provider extends Component {
 
   async componentDidMount() {
     const resp = await axios
-      .get("http://localhost:3000/employees")
+      .get("http://localhost:5000/employees")
       .then(resp => {
         console.log(resp.data);
         this.setState({
